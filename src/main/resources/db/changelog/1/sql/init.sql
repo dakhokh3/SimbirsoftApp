@@ -1,11 +1,13 @@
-create table site_user
+create schema market;
+
+create table market.site_user
 (
     id       serial primary key,
     login    varchar(30),
     password varchar(64)
 );
 
-create table item
+create table market.item
 (
     id          serial primary key,
     name        varchar(100),
@@ -15,13 +17,13 @@ create table item
     category_id int
 );
 
-create table category
+create table market.category
 (
     id   serial primary key,
     name varchar(30)
 );
 
-alter table item
-    add constraint fk_category_id_category foreign key (category_id) references category (id);
+alter table market.item
+    add constraint fk_category_id_category foreign key (category_id) references market.category (id);
 
 
